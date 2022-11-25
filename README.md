@@ -10,5 +10,5 @@ Me quedé en la parte en la que tenía que añadir un nuevo clasificador. Los pr
 
 Al 14 de noviembre, no he logrado terminar el proyecto, sin embargo, reporto mis avances hasta ahora.
 
-ACTUALIZACIÓN 25 DE NOVIEMBRE, 2022.
+# ACTUALIZACIÓN 25 DE NOVIEMBRE, 2022.
 En el archivo llamado "aumentando_datos_clasificación_binaria" tomé fotos mías (específicamente 21) para hacerles transformaciones como pequeñas rotaciones, reflexiones, zoom, estirarlas verticalmente u horizontalmente. Los espacios que quedaban vacíos al rotar o estirar los llenaba con los colores que estaban cerca de los alrededores vacíos. Con ello, transformé las 21 fotografías de mi rostro en 6642 fotografías. Intenté hacer el problema de clasificación binaria como se había hecho en el código para distinguir entre perros y gatos (esto quedó escrito en el archivo llamado "clasificación binaria"). Sin embargo, al querer utilizar las capas del modelo de extracción de características que había entrenado con la base de datos CelebA, tuve problemas. Pienso que esto viene porque en lugar de haberlo hecho exactamente igual al problema de perros y gatos, en donde distinguía ambas fotos por la carpeta en donde se encontraba, debí haber hecho también los datasets para alimentarlo a las capas que precisamente entrené con datasets también. Este fue un intento fallido.
