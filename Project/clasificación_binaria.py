@@ -75,9 +75,9 @@ y_train = y
 #y_test = y_test
 #Aquí voy a añadir el modelo que ya entrené, congelaré las primeras capas y solamente añadiré alguna convolucional con una densa de una neurona, para que pueda
 #diferenciar entre mí y las fotos en las que no aparezco.
-'''pre_trained_model=load_model('red3.h5')
+pre_trained_model=load_model('red3.h5')
 model = tf.keras.Sequential()
-model.add(pre_trained_model.layers[4])
+model.add(pre_trained_model.layers[0])
 model.add(Dense(1, activation='sigmoid'))
 for layer in model.layers[:11]:
     layer.trainable = False
@@ -85,8 +85,8 @@ model.compile(loss='binary_crossentropy',optimizer=RMSprop(),metrics=['accuracy'
 history = model.fit(x_train, y_train,batch_size=128,epochs=30,verbose=1,validation_data=(x_test, y_test))
 model.summary()
 score = model.evaluate(x_test, y_test, verbose=0)
-print(score)'''
-model = Sequential()
+print(score)
+'''model = Sequential()
 model.add(Dense(512, activation='relu', input_shape=(192*192*3,)))
 #model.add(Dropout(0.2))
 model.add(Dense(512, activation='relu'))
@@ -94,8 +94,7 @@ model.add(Dense(512, activation='relu'))
 model.add(Dense(512, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 model.summary()
-
 model.compile(loss='binary_crossentropy',optimizer=RMSprop(),metrics=['accuracy'])
 history = model.fit(x_train, y_train,batch_size=128,epochs=30,verbose=1,validation_data=(x_test, y_test))
 score = model.evaluate(x_test, y_test, verbose=0)
-print(score)
+print(score)'''

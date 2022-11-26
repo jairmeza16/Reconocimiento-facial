@@ -36,7 +36,10 @@ files = tf.data.Dataset.from_tensor_slices(df[0])
 attributes = tf.data.Dataset.from_tensor_slices(df.iloc[:,1:].to_numpy())
 #print(f'esto es attributes {attributes}')
 data = tf.data.Dataset.zip((files, attributes))
-#print(f'esto es data {data}')
+#Para identificar a data y su forma:
+print(f'esto es data {data}')
+print(data.__len__())
+
 
 path_to_images = 'C:/Users/jairm/OneDrive/Documentos/Redes neuronales/Reconocimiento_facial/img_align_celeba/img_align_celeba/'
 def process_file(file_name, attributes):
@@ -48,8 +51,8 @@ def process_file(file_name, attributes):
 
 labeled_images = data.map(process_file)
 
-'''print('AQUÍ IMPRIMÍ ALGO')
-print(labeled_images)'''
+print('AQUÍ IMPRIMÍ ALGO')
+print(labeled_images)
 #print('Aquí imprimí la dirección de las imágenes')
 #print(path_to_images+'0001.jpeg')
 
@@ -78,7 +81,8 @@ def get_dataset_partitions_tf(ds, ds_size, train_split=0.8, val_split=0.1, test_
     
     return train_ds, val_ds, test_ds
 #print('--------------')
-#print(labeled_images.__len__()) #Para saber la longitud del dataset.
+print(labeled_images.__len__()) #Para saber la longitud del dataset.
+
 
 #En la siguiente línea tuve problemas, pues pensé que al llamar la función, me iba a devolver las variables train_ds, val_ds, test_ds, pero en realidad devuelve los 
 #valores... Entonces hay que crear las variables e igualarlas a los valores que devuelve la función para poder llamar a estas variables en la red neuronal.
@@ -91,13 +95,15 @@ print(val_ds.__len__()) #val_ds tiene 20259 imágenes'''
 tstep=162079//32 #5064
 vstep=20259//32 #633
 
-
+print(train_ds)
+print(val_ds)
 
 #Aquí estoy especificando el batch para ambos datasets Igual le puse que se repitiera el número de veces de las épocas, la primera vez que lo corrí y que no repetí los datos
 # me dijo que se me habían acabado los datos y que debía repetir el dataset...
 train_ds = train_ds.batch(32).repeat(8)
 val_ds = val_ds.batch(32).repeat(8)
 
+exit()
 #Escribiendo la red 
 model = Sequential()
 #Cambié el input_shape, pero no sé si hay que ponerle el tamaño que tenían las imágenes o algo del tamaño del tensor...
