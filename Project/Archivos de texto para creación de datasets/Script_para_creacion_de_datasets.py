@@ -130,15 +130,17 @@ print("Aquí imprimí cosas 2")
 
 print(train_ds.__len__()) #train_ds tiene 9313 imágenes
 print(val_ds.__len__()) #val_ds tiene 1164 imágenes
+
 tstep=9313//32 #291
 vstep=1164//32 #36
 #Aquí estoy especificando el batch para ambos datasets Igual le puse que se repitiera el número de veces de las épocas, la primera vez que lo corrí y que no repetí los datos
 # me dijo que se me habían acabado los datos y que debía repetir el dataset...
 train_ds = train_ds.batch(32).repeat(8)
 val_ds = val_ds.batch(32).repeat(8)
+test_ds = test_ds.batch(32).repeat(8)
 
 #Ahora, construyamos propiamente la red neuronal con las capas de la anterior que fue entrenada. Para ello, hay que cargar el último modelo entrenado.
-pre_trained_model=load_model('red3.h5')
+'''pre_trained_model=load_model('red3.h5')
 model = tf.keras.Sequential()
 model.add(pre_trained_model.layers[0])
 model.add(pre_trained_model.layers[1])
@@ -178,4 +180,9 @@ model.fit(
                 )
 
 
-model.save("red4.h5")
+model.save("red4.h5")'''
+#Estoy intentando evaluar el modelo con el dataset de evaluación... añadí captura de pantalla en la carpeta de fotos_entrenamiento
+model = load_model('red4.h5')
+loss, accuracy = model.evaluate(test_ds)
+print(loss)
+print(accuracy)

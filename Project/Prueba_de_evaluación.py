@@ -64,4 +64,4 @@ train_ds, val_ds, test_ds = get_dataset_partitions_tf(labeled_images, 202599)
 tstep=162079//32 #5064
 vstep=20259//32 #633
 test_ds = test_ds.batch(32).repeat(8)
-model.evaluate(test_ds, steps_per_epoch=vstep, epochs= 1)
+model.predict(test_ds, steps_per_epoch=vstep, epochs= 1)
