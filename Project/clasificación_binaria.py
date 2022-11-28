@@ -56,6 +56,8 @@ x, x_test, y, y_test = train_test_split(allX, ally, test_size=0.2, random_state=
 #print(x_test.shape)
 #print(y.shape)
 #print(y_test.shape)
+
+#Esta forma del x_train no nos sirve, pues no se puede empatar con las capas de la red pre-entrenada. La forma debe ser 'shape=(None, 192, 192, 3)'.
 x_train = x.reshape(x.shape[0], 192*192*3)
 x_test = x_test.reshape(x_test.shape[0], 192*192*3)
 x_train = x_train.astype('float32')
